@@ -1,0 +1,89 @@
+#logo{
+    text-align: center;
+}
+
+body{
+    background-color: #005A36;
+    font-family: sans-serif;
+}
+
+h1{
+    text-align: center;
+    text-decoration-line: underline;
+    font-size: 19px;
+}
+
+#titulo{
+    padding: 30px;
+}
+
+.titContenido{
+    float:left;
+    width: 200px;
+    padding-top: 5px;
+    font-weight: bold;
+    /*border-width: medium;
+    border-style: solid;*/
+}
+
+.inputContenido{
+    /*border-width: medium;
+    border-style: solid;*/
+}
+
+
+.row{
+    padding: 10px;
+    height: 40px;
+    /*border-width: medium;
+    border-style: solid;*/
+}
+
+#hoja{
+    background-color: white;
+    width: 770px;
+    margin: 0 auto;
+    padding-top: 60px;
+    padding-left: 120px;
+    padding-right: 120px;
+    padding-bottom: 130px;
+}
+
+input{
+    width: 300px;
+}
+
+#logoPng{
+    width: 150px;
+    height: 150px;
+}
+
+textarea{
+    font-size: 14px;
+    font-family: sans-serif;
+}
+
+#rowContExtra{
+    height: 100px;
+}
+
+
+#btn{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding-left:110px;
+    padding-right:110px;
+}
+
+#imgPdf{
+    padding-left: 23px;
+}
+
+.nota{
+    font-size: 13px;
+    color: red;
+    padding-left:200px;
+}

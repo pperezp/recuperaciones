@@ -1,0 +1,83 @@
+#logo{
+    text-align: center;
+}
+
+body{
+    /*background-color: #005A36;*/
+    font-family: sans-serif;
+}
+
+h1{
+    text-align: center;
+    text-decoration-line: underline;
+    font-size: 15px;
+    padding-bottom: -10px;
+}
+
+#titulo{
+    padding: 30px;
+}
+
+
+.titContenido2{
+    float:left;
+    width: 200px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.inputContenido{
+    font-size: 12px;
+}
+
+.row{
+    /*padding: 10px;*/
+    height: 40px;
+    /*border-width: medium;
+    border-style: solid;*/
+}
+
+input{
+    width: 300px;
+}
+
+#foot{
+    width: 600px;
+    padding-top: 100px;
+}
+
+#firma{
+    float:left;
+    width: 60%;
+}
+
+#coordinacion{
+    /*padding-left: 100px;*/
+    width:40%;
+    float:left;
+}
+
+.textoFoot{
+    /*text-align: center;*/
+    width: 100%;
+    font-size: 12px;
+}
+
+#foot{
+    padding-top: 200px;
+    padding-left: 40px;
+}
+
+#logoPng{
+    width: 100px;
+    /*height: 100px;*/
+}
+
+#cantHoras{
+    padding-bottom: 15px;
+}
+
+#content{
+    padding-top: 60px;
+    padding-left: 40px;
+}
