@@ -9,6 +9,7 @@ create table docente(
 );
 
 insert into docente values('16828943-k','Patricio Nicolás Pérez Pinto');
+insert into docente values('16564067-5','Julia Fabiola Muñoz Ampuero');
 
 create table carrera(
     id int auto_increment,
@@ -53,7 +54,7 @@ create table recuperacion(
     horario varchar(20),
     horas int,
     sala varchar(100),
-    infoExtra varchar(300),
+    infoExtra varchar(1000),
     fecha datetime,
     primary key(id),
     foreign key(docente) references docente(rut)

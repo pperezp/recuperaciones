@@ -7,46 +7,20 @@ require_once("model/Util.php");
 require_once("model/DatosReporte.php");
 require_once("model/Data.php");
 
+$id = $_POST["id"];
+
 $u = new Util();
 $u->showErrors(); // muestra el stack de errores
 $u->setLocaleEs(); // español
 
-$d = new DatosReporte();
-
-if(!isset($_POST["docente"])){
-    header("location: index.php");
-}
-
-/*Recuperando los datos del formulario*/
-$d->rut = $_POST["rut"];
-$d->docente = $u->pasarMayusculas(strtoupper($_POST["docente"]));
-$d->carrera = $u->pasarMayusculas(strtoupper($_POST["carrera"]));
-$d->asignatura = $u->pasarMayusculas(strtoupper($_POST["asignatura"]));
-$d->seccion = $u->pasarMayusculas(strtoupper($_POST["seccion"]));
-$d->fechaAusencia = strtoupper($_POST["fechaAusencia"]);
-
-list($dia, $mes, $anio) = explode(' DE ', $d->fechaAusencia);
-$mes = $u->getMes($mes);
-$d->fechaAusenciaSQL = $anio."-".$mes."-".$dia;
-
-
-$d->motivo = $u->pasarMayusculas(strtoupper($_POST["motivo"]));
-$d->fechaRecuperacion = strtoupper($_POST["fechaRecuperacion"]);
-
-list($dia, $mes, $anio) = explode(' DE ', $d->fechaRecuperacion);
-$mes = $u->getMes($mes);
-$d->fechaRecuperacionSQL = $anio."-".$mes."-".$dia;
-
-$d->horario = $u->pasarMayusculas(strtoupper($_POST["horario"]));
-$d->horas = strtoupper($_POST["horas"]);
-$d->sala = $u->pasarMayusculas(strtoupper($_POST["sala"]));
-$d->infoExtra = $u->pasarMayusculas(strtoupper($_POST["infoExtra"]));
-/*Recuperando los datos del formulario*/
-
 $data = new Data();
-$data->crearRecuperacion($d);
-$d->id = $data->getUltimoID();
-$d->id = $d->id." [".$u->getFechaFormateadaConHora($data->getFechaCreacion($d->id))."]";
+
+$d = $data->getRecuperacion($id);
+$d->docente = $data->getNombre($d->rut);
+$d->fechaAusencia = $u->getFechaFormateada($d->fechaAusencia);
+$d->fechaRecuperacion = $u->getFechaFormateada($d->fechaRecuperacion);
+$d->id = $d->id." [".$u->getFechaFormateadaConHora($d->fecha)."]";
+
 ?>
 <html>
     <head>

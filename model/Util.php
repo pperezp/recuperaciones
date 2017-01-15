@@ -65,5 +65,62 @@ class Util{
             return 12;
         }
     }
+
+    public function getFechaFormateadaConHora($fecha){
+        list($fec, $hor) = explode(" ", $fecha);
+
+        $fec = $this->getFechaFormateada($fec);
+
+        return $fec . " A LAS " . $hor;
+    }
+
+    /*La fecha llegará como formato SQL (sin hora)*/
+    public function getFechaFormateada($fecha){
+        list($anio, $mes, $dia) = explode('-', $fecha);
+
+        $mesPalabra = "";
+
+        switch ($mes) {
+            case 1:
+                $mesPalabra = " DE ENERO DE ";
+                break;
+            case 2:
+                $mesPalabra = " DE FEBRERO DE ";
+                break;
+            case 3:
+                $mesPalabra = " DE MARZO DE ";
+                break;
+            case 4:
+                $mesPalabra = " DE ABRIL DE ";
+                break;
+            case 5:
+                $mesPalabra = " DE MAYO DE ";
+                break;
+            case 6:
+                $mesPalabra = " DE JUNIO DE ";
+                break;
+            case 7:
+                $mesPalabra = " DE JULIO DE ";
+                break;
+            case 8:
+                $mesPalabra = " DE AGOSTO DE ";
+                break;
+            case 9:
+                $mesPalabra = " DE SEPTIEMBRE DE ";
+                break;
+            case 10:
+                $mesPalabra = " DE OCTUBRE DE ";
+                break;
+            case 11:
+                $mesPalabra = " DE NOVIEMBRE DE ";
+                break;
+            case 12:
+                $mesPalabra = " DE DICIEMBRE DE ";
+                break;
+
+        }
+
+        return $dia.$mesPalabra.$anio;
+    }
 }
 ?>

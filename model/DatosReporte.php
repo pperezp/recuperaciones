@@ -15,6 +15,7 @@ class DatosReporte{
     public $horas;
     public $sala;
     public $infoExtra;
+    public $fecha; // fecha de la creación del reporte
 
     public function getNombreArchivo(){
         require_once("Util.php");
