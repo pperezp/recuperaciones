@@ -64,12 +64,14 @@ $d->id = $d->id." [".$u->getFechaFormateadaConHora($data->getFechaCreacion($d->i
         //$mPdf = new mPDF('c','A4');
         $mpdf = new mPDF();
 
+        $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8'); // esto es por el error "HTML contains invalid UTF-8 character(s)"
+
         /*Error Chrome*/
-        ob_clean();
+        /*ob_clean();
         header('Content-type: application/pdf');
         header('Content-Disposition: inline; filename="recuperacion_'.$_POST["asignatura"].'.pdf"');
         header('Content-Transfer-Encoding: binary');
-        header('Accept-Ranges: bytes');
+        header('Accept-Ranges: bytes');*/
         /*Error Chrome*/
 
         $mpdf->WriteHTML($html);
@@ -77,7 +79,7 @@ $d->id = $d->id." [".$u->getFechaFormateadaConHora($data->getFechaCreacion($d->i
         $nombreArchivo = $d->getNombreArchivo();
         //'Recuperación_'.str_replace(" ", "_",$_POST["asignatura"]).'.pdf'
 
-        $mpdf->Output($nombreArchivo, "I");
+        $mpdf->Output($nombreArchivo, "D");
         //$mpdf->Output();
         exit;
         ?>

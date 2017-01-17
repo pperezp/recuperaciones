@@ -1,5 +1,6 @@
 <?php
 require_once("model/Data.php");
+setlocale(LC_CTYPE,"es_ES");
 
 $rut = trim(str_replace(".","",$_POST["rut"]));
 

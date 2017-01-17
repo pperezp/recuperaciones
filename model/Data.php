@@ -1,12 +1,13 @@
 <?php
 require_once("Conexion.php");
 require_once("DatosReporte.php");
+setlocale(LC_CTYPE,"es_ES");
 
 class Data{
     private $c;
 
     public function __construct(){
-        $this->c = new Conexion("bd_recuperaciones","root","123456");
+        $this->c = new Conexion("bd_recuperaciones","root","");
     }
 
     public function crearRecuperacion($rec){
