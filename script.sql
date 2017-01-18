@@ -54,7 +54,7 @@ create table recuperacion(
     horario varchar(20),
     horas int,
     sala varchar(100),
-    infoExtra varchar(1000),
+    infoExtra varchar(150),
     fecha datetime,
     primary key(id),
     foreign key(docente) references docente(rut)

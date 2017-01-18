@@ -7,7 +7,7 @@ class Data{
     private $c;
 
     public function __construct(){
-        $this->c = new Conexion("bd_recuperaciones","root","");
+        $this->c = new Conexion("bd_recuperaciones","root","123456");
     }
 
     public function crearRecuperacion($rec){
@@ -98,6 +98,22 @@ class Data{
     public function getDocentes(){
         $docentes = array();
         $query = "select * from docente order by nombre asc";
+        $this->c->conectar();
+
+        $rs = $this->c->ejecutar($query);
+
+        while($obj = $rs->fetch_object()){
+            array_push($docentes, $obj);
+        }
+
+        $this->c->desconectar();
+
+        return $docentes;
+    }
+    
+    public function getDocentesByFiltro($filtro){
+        $docentes = array();
+        $query = "select * from docente where rut like '%$filtro%' or nombre like '%$filtro%' order by nombre asc";
         $this->c->conectar();
 
         $rs = $this->c->ejecutar($query);
