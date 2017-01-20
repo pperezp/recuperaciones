@@ -1,13 +1,16 @@
 <?php
 require_once("Conexion.php");
 require_once("DatosReporte.php");
+require_once 'Docente.php';
+require_once 'K.php';
+
 setlocale(LC_CTYPE,"es_ES");
 
 class Data{
     private $c;
 
     public function __construct(){
-        $this->c = new Conexion("bd_recuperaciones","root","123456");
+        $this->c = new Conexion(BD,USER,PASS);
     }
 
     public function crearRecuperacion($rec){
@@ -31,6 +34,17 @@ class Data{
         $this->c->conectar();
         $this->c->ejecutar($query);
         $this->c->desconectar();
+    }
+    
+    public function crearDocente($docente){
+        $query = "insert into docente values('$docente->rut','$docente->nombre', true);";
+        
+        $this->c->conectar();
+        $res = $this->c->ejecutar($query);
+        
+        $this->c->desconectar();
+        
+        return $res;
     }
 
     public function getUltimoID(){
@@ -80,7 +94,7 @@ class Data{
     }
 
     public function getNombre($rut){
-        $query = "select nombre from docente where rut = '$rut'";
+        $query = "select nombre, activo from docente where rut = '$rut' and activo = true";
         $this->c->conectar();
 
         $rs = $this->c->ejecutar($query);
@@ -93,6 +107,22 @@ class Data{
 
         $this->c->desconectar();
         return $nombre;
+    }
+    
+    public function getDocente($rut){
+        $docente = null;
+        $query = "select * from docente where rut = '$rut'";
+        $this->c->conectar();
+
+        $rs = $this->c->ejecutar($query);
+
+        if($obj = $rs->fetch_object()){
+            $docente = $obj;
+        }
+
+        $this->c->desconectar();
+
+        return $docente;
     }
 
     public function getDocentes(){
@@ -169,6 +199,14 @@ class Data{
         $this->c->desconectar();
 
         return $dr;
+    }
+    
+    public function setEstadoDocente($rut, $activo){
+        $query = "update docente set activo = $activo where rut = '$rut'";
+        
+        $this->c->conectar();
+        $this->c->ejecutar($query);
+        $this->c->desconectar();
     }
 
 }

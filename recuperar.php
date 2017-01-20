@@ -71,7 +71,7 @@ $mpdf->WriteHTML($html);
 $nombreArchivo = $d->getNombreArchivo();
 //'Recuperación_'.str_replace(" ", "_",$_POST["asignatura"]).'.pdf'
 
-$mpdf->Output($nombreArchivo, "I");
+$mpdf->Output($nombreArchivo, "D");
 
 //$mpdf->Output();
 //exit;

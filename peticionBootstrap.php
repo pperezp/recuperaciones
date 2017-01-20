@@ -85,6 +85,8 @@ require_once("model/Data.php");
                 <?php
                 if($rut == "16828943-k"){
                     echo "<a href='reportes.php'>Reportes</a>";
+                    echo "<br>";
+                    echo "<a href='crearDocente.php'>Crear docentes</a>";
                 }
                 ?>
                 
@@ -108,19 +110,32 @@ require_once("model/Data.php");
 
                         <div class="form-group col-md-4" >
                             <label for="carrera">Carrera:</label>
-                            <input class="form-control" list="listCarreras" type="text" name="carrera" required="required">
-
-                            <datalist id="listCarreras">
+                            
+                            <select class="form-control" name="carrera">
                                 <?php
                                 $d = new Data();
 
                                 $carreras = $d->getCarreras();
 
                                 foreach ($carreras as $c) {
-                                    echo "<option value='" . $c->nombre . "'/>";
+                                    echo "<option value='" . $c->nombre . "'>$c->nombre</option>";
                                 }
                                 ?>
-                            </datalist>
+                            </select>
+                            
+<!--                            <input class="form-control" list="listCarreras" type="text" name="carrera" required="required">
+
+                            <datalist id="listCarreras">
+                                <?php
+                                /*$d = new Data();
+
+                                $carreras = $d->getCarreras();
+
+                                foreach ($carreras as $c) {
+                                    echo "<option value='" . $c->nombre . "'/>";
+                                }*/
+                                ?>
+                            </datalist>-->
                         </div>
 
 

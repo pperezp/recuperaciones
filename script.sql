@@ -5,11 +5,12 @@ use bd_recuperaciones;
 create table docente(
     rut varchar(12),
     nombre varchar(100),
+    activo boolean,
     primary key(rut)
 );
 
-insert into docente values('16828943-k','Patricio Nicolás Pérez Pinto');
-insert into docente values('16564067-5','Julia Fabiola Muñoz Ampuero');
+insert into docente values('16828943-k','Patricio Nicolás Pérez Pinto', true);
+insert into docente values('16564067-5','Julia Fabiola Muñoz Ampuero', true);
 
 create table carrera(
     id int auto_increment,

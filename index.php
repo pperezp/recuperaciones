@@ -17,10 +17,11 @@
             </form>
 
             <?php
-            if (isset($_GET["e"]) && isset($_GET["rut"])) {
+            if (isset($_GET["e"])) {
                 $e = $_GET["e"];
-                $rut = $_GET["rut"];
+
                 if ($e == 1) {
+                    $rut = $_GET["rut"];
                     ?>
                     <br>
                     <div class="alert alert-danger" role="alert">
@@ -28,10 +29,19 @@
                         El rut <span class="alert-link"><?php echo $rut; ?></span> no se encuentra en la base de datos. 
                     </div>
                     <?php
+                } else if ($e == 2) {
+                    $nombre = $_GET["nombre"];
+                    ?>
+                    <br>
+                    <div class="alert alert-warning" role="alert">
+                        <span class="sr-only">Error:</span>
+                        El docente <span class="alert-link"><?php echo $nombre; ?></span> se encuentra <span class="alert-link">inhabilitado</span> en la base de datos. Contactar con Patricio Pérez Pinto
+                    </div>
+                    <?php
                 }
             }
             ?>
-            
+
         </div>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
