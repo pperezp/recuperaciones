@@ -16,8 +16,8 @@ $doc = new Docente($rut, $nombre);
 $resOK = $d->crearDocente($doc);
 
 if($resOK){
-    header("location: ../crearDocente.php?m=1");
+    header("location: ../views/crearDocente.php?m=1");
 }else{
-    header("location: ../crearDocente.php?m=2");
+    header("location: ../views/crearDocente.php?m=2");
 }
 

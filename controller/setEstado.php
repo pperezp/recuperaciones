@@ -12,4 +12,4 @@ $d = new Data();
 
 $d->setEstadoDocente($rut, $estado);
 
-header("location: ../crearDocente.php");
+header("location: ../views/crearDocente.php");

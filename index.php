@@ -7,7 +7,7 @@
     <body>
         <div class="container">
             <h1 class="page-header">Recuperaciones</h1>
-            <form action="validar.php" method="post" class="navbar-form">
+            <form action="controller/validar.php" method="post" class="navbar-form">
                 <div class="input-group col-md-4">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                     <input id="rut" type="text" class="form-control" name="rut" placeholder="EJ: 12345678-k">                                        
@@ -35,7 +35,7 @@
                     <br>
                     <div class="alert alert-warning" role="alert">
                         <span class="sr-only">Error:</span>
-                        El docente <span class="alert-link"><?php echo $nombre; ?></span> se encuentra <span class="alert-link">inhabilitado</span> en la base de datos. Contactar con Patricio Pérez Pinto
+                        El docente <span class="alert-link"><?php echo $nombre; ?></span> se encuentra <span class="alert-link">inhabilitado</span> en la base de datos. Contactáctese con el administrador.
                     </div>
                     <?php
                 }

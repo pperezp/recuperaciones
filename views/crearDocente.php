@@ -8,13 +8,13 @@ if (isset($_SESSION["rut"])) {
     $rut = $_SESSION["rut"];
 
     if ($rut != "16828943-k") {
-        header("location: index.php");
+        header("location: ../index.php");
     }
 } else {
-    header("location: index.php");
+    header("location: ../index.php");
 }
 
-require_once './model/Data.php';
+require_once '../model/Data.php';
 ?>
 <html>
     <head>
@@ -23,7 +23,7 @@ require_once './model/Data.php';
     <body>
         <div class="container">
             <h1 class="page-header">Crear docente</h1>
-            <form action="controller/crearDocente.php" method="post">
+            <form action="../controller/crearDocente.php" method="post">
                 <div class="panel panel-primary col-md-5">
                     <div class="panel-heading">
                         Datos docente
@@ -83,7 +83,9 @@ require_once './model/Data.php';
                         }
                         ?>
                     </div>
+                    <a href="../views/peticionBootstrap.php">Volver</a>
                 </div>
+
             </form>
             <div class="col-md-7">
                 <form action="crearDocente.php" method="post">
@@ -109,29 +111,27 @@ require_once './model/Data.php';
                     if (isset($_POST["filtro"])) {
                         $filtro = $_POST["filtro"];
                         $docentes = $d->getDocentesByFiltro($filtro);
-                    } else {
-                        $docentes = $d->getDocentes();
-                    }
 
-                    foreach ($docentes as $doc) {
-                        echo "<tr>";
-                        echo "<td>$doc->rut</td>";
-                        echo "<td>$doc->nombre</td>";
+                        foreach ($docentes as $doc) {
+                            echo "<tr>";
+                            echo "<td>$doc->rut</td>";
+                            echo "<td>$doc->nombre</td>";
 
-                        echo "<td>";
-                        echo "<form action='controller/setEstado.php' method='post'>";
-                        echo "<input type='hidden' name='rut' value='$doc->rut'>";
-                        if ($doc->activo) {
-                            echo "<input type='submit' value='Desactivar' class='btn btn-success'>";
-                            echo "<input type='hidden' name='estado' value='false'>";
-                        } else {
-                            echo "<input type='submit' value='Activar' class='btn btn-danger'>";
-                            echo "<input type='hidden' name='estado' value='true'>";
+                            echo "<td>";
+                            echo "<form action='../controller/setEstado.php' method='post'>";
+                            echo "<input type='hidden' name='rut' value='$doc->rut'>";
+                            if ($doc->activo) {
+                                echo "<input type='submit' value='Desactivar' class='btn btn-success'>";
+                                echo "<input type='hidden' name='estado' value='false'>";
+                            } else {
+                                echo "<input type='submit' value='Activar' class='btn btn-danger'>";
+                                echo "<input type='hidden' name='estado' value='true'>";
+                            }
+                            echo "</form>";
+                            echo "</td>";
+
+                            echo "</tr>";
                         }
-                        echo "</form>";
-                        echo "</td>";
-
-                        echo "</tr>";
                     }
                     ?>
                 </table>

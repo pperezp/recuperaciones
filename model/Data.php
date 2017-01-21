@@ -172,6 +172,64 @@ class Data{
 
         return $recuperaciones;
     }
+    
+    public function getRecuperacionesByFiltro($rut, $semestre, $anio){
+        $recuperaciones = array();
+        
+        if($semestre == "1"){
+            $mesInicial = "01";
+            $mesFinal = "07";
+        }else{
+            $mesInicial = "08";
+            $mesFinal = "12";
+        }
+        
+        $query = "select * from recuperacion where docente = '$rut' and "
+                . "fecha between '$anio-$mesInicial-01' and "
+                . "'$anio-$mesFinal-31' order by fecha desc";
+        $this->c->conectar();
+
+        $rs = $this->c->ejecutar($query);
+
+        while($obj = $rs->fetch_object()){
+            array_push($recuperaciones, $obj);
+        }
+
+        $this->c->desconectar();
+
+        return $recuperaciones;
+    }
+    
+    public function getTotalHorasRecuperacionByFiltro($rut, $semestre, $anio){
+        $horas = 0;
+        
+        if($semestre == "1"){
+            $mesInicial = "01";
+            $mesFinal = "07";
+        }else{
+            $mesInicial = "08";
+            $mesFinal = "12";
+        }
+        
+        $query = "select sum(horas) from recuperacion where docente = '$rut' and "
+                . "fecha between '$anio-$mesInicial-01' and "
+                . "'$anio-$mesFinal-31' order by fecha desc";
+        $this->c->conectar();
+
+        $rs = $this->c->ejecutar($query);
+
+        if($obj = $rs->fetch_array()){
+            $horas = $obj[0];
+        }
+
+        $this->c->desconectar();
+
+        if($horas == null){
+            $horas = 0;
+        }
+        
+        return $horas;
+    }
 
     public function getRecuperacion($id){
         $query = "select * from recuperacion where id = '$id'";

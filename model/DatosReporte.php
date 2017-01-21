@@ -33,7 +33,7 @@ class DatosReporte{
     }
 
     public function getReporteHTML(){
-        $css = file_get_contents("css/estilosReporteRecuperacion.css");
+        $css = file_get_contents("../css/estilosReporteRecuperacion.css");
 
         $html = '<style>'.$css.'</style>
 
@@ -41,7 +41,7 @@ class DatosReporte{
             <div id="hoja2">
                 <div>Nº '.$this->id.'</div>
                 <div id="logo">
-                    <img id="logoPng" src="images/logo.jpg" alt="Logo" />
+                    <img id="logoPng" src="../images/logo.jpg" alt="Logo" />
                 </div>
 
                 <div id="titulo">

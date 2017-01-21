@@ -1,5 +1,5 @@
 <?php
-require_once("model/Data.php");
+require_once("../model/Data.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,7 +25,7 @@ require_once("model/Data.php");
                         ?>">
                         <input type="submit" class="btn btn-default" value="Buscar">
                     </form>
-
+                    <a href="../views/peticionBootstrap.php">Volver</a>
                     <table class="table">
                         <tr>
                             <th>Rut</th>
@@ -38,15 +38,12 @@ require_once("model/Data.php");
                         if (isset($_POST["filtro"])) {
                             $filtro = $_POST["filtro"];
                             $docentes = $d->getDocentesByFiltro($filtro);
-                        } else {
-                            $docentes = $d->getDocentes();
-                        }
 
-                        foreach ($docentes as $doc) {
-                            echo "<tr>";
-                            echo "<td>$doc->rut</td>";
-                            echo "<td>$doc->nombre</td>";
-                            echo "<td>
+                            foreach ($docentes as $doc) {
+                                echo "<tr>";
+                                echo "<td>$doc->rut</td>";
+                                echo "<td>$doc->nombre</td>";
+                                echo "<td>
                             <form action='detalle.php' method='post'>
                                 <input type='hidden' name='rut' value='$doc->rut'>
                                 <input type='hidden' name='nombre' value='$doc->nombre'>
@@ -58,7 +55,8 @@ require_once("model/Data.php");
                                 </button>
                             </form>
                           </td>";
-                            echo "</tr>";
+                                echo "</tr>";
+                            }
                         }
                         ?>
                     </table>

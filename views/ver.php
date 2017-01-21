@@ -3,9 +3,9 @@
 // Actualmente estoy trabajando con la versión 6.0 de mPDF
 // Página oficial (No me sirvió de mucho):
 // https://mpdf.github.io/getting-started/html-or-php.html
-require_once("model/Util.php");
-require_once("model/DatosReporte.php");
-require_once("model/Data.php");
+require_once("../model/Util.php");
+require_once("../model/DatosReporte.php");
+require_once("../model/Data.php");
 
 $id = $_POST["id"];
 
@@ -17,6 +17,7 @@ $data = new Data();
 
 $d = $data->getRecuperacion($id);
 $d->docente = $data->getNombre($d->rut);
+$d->docente = $u->pasarMayusculas(strtoupper($d->docente));
 $d->fechaAusencia = $u->getFechaFormateada($d->fechaAusencia);
 $d->fechaRecuperacion = $u->getFechaFormateada($d->fechaRecuperacion);
 $d->id = $d->id." [".$u->getFechaFormateadaConHora($d->fecha)."]";
@@ -33,7 +34,7 @@ $d->id = $d->id." [".$u->getFechaFormateadaConHora($d->fecha)."]";
     <body>
         <?php
         $html = $d->getReporteHTML();
-        require_once("mpdf60/mpdf.php");
+        require_once("../mpdf60/mpdf.php");
 
         //$mPdf = new mPDF('c','A4');
         $mpdf = new mPDF();

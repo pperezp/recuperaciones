@@ -3,9 +3,9 @@
 // Actualmente estoy trabajando con la versión 6.0 de mPDF
 // Página oficial (No me sirvió de mucho):
 // https://mpdf.github.io/getting-started/html-or-php.html
-require_once("model/Util.php");
-require_once("model/DatosReporte.php");
-require_once("model/Data.php");
+require_once("../model/Util.php");
+require_once("../model/DatosReporte.php");
+require_once("../model/Data.php");
 
 $u = new Util();
 $u->showErrors(); // muestra el stack de errores
@@ -14,7 +14,7 @@ $u->setLocaleEs(); // español
 $d = new DatosReporte();
 
 if (!isset($_POST["docente"])) {
-    header("location: index.php");
+    header("location: ../index.php");
 }
 
 /* Recuperando los datos del formulario */
@@ -51,7 +51,7 @@ $d->id = $d->id . " [" . $u->getFechaFormateadaConHora($data->getFechaCreacion($
 
 <?php
 $html = $d->getReporteHTML();
-require_once("mpdf60/mpdf.php");
+require_once("../mpdf60/mpdf.php");
 
 //$mPdf = new mPDF('c','A4');
 $mpdf = new mPDF();

@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION["rut"])) {
-    header("location: index.php");
+    header("location: ../index.php");
 } else {
     $rut = $_SESSION["rut"];
     $nombre = $_SESSION["nombre"];
@@ -12,7 +12,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 setlocale(LC_CTYPE, "es_ES");
-require_once("model/Data.php");
+require_once("../model/Data.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,10 +20,13 @@ require_once("model/Data.php");
         <meta charset="utf-8">
         <title>Recuperación de clases - SANTO TOMÁS RANCAGUA</title>
 
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
+        
+        <!-- Esto es del calendario JQUERY -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!-- Esto es del calendario JQUERY -->
 
         <script>
             $(function () {
@@ -79,7 +82,7 @@ require_once("model/Data.php");
         </script>
     </head>
     <body>
-        <form action="recuperar.php" method="post" onsubmit="return confirm('Por favor, REVISE sus datos. ¿Generar PDF?');">
+        <form action="../controller/recuperar.php" method="post" onsubmit="return confirm('Por favor, REVISE sus datos. ¿Generar PDF?');">
             <div class="container">
                 <h1 class="page-header">Solicitud de recuperación de clases</h1>
                 <?php
@@ -180,6 +183,9 @@ require_once("model/Data.php");
                         <div class="form-group col-md-4">
                             <label for="horas">Cantidad de horas académicas:</label>
                             <input class="form-control" type="number" name="horas" required="required" min="1" max="6">
+                            <div class="alert alert-warning">
+                                IMPORTANTE: Sólo se pueden recuperar 6 horas como máximo
+                            </div>
                         </div>
 
                         <div class="form-group col-md-4">
