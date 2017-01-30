@@ -20,7 +20,7 @@ require_once("../model/Data.php");
         <meta charset="utf-8">
         <title>Recuperación de clases - SANTO TOMÁS RANCAGUA</title>
 
-        
+
         <!-- Esto es del calendario JQUERY -->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css">
@@ -82,23 +82,21 @@ require_once("../model/Data.php");
         </script>
     </head>
     <body>
-        <form action="../controller/recuperar.php" method="post" onsubmit="return confirm('Por favor, REVISE sus datos. ¿Generar PDF?');">
-            <div class="container">
-                <h1 class="page-header">Solicitud de recuperación de clases</h1>
-                <?php
-                if($rut == "16828943-k"){
-                    echo "<a href='reportes.php'>Reportes</a>";
-                    echo "<br>";
-                    echo "<a href='crearDocente.php'>Crear docentes</a>";
-                }
-                ?>
-                
+        <?php $_SESSION["paginaActual"] = 1;?>
+        <?php require_once 'navbar.php';?>
+
+        <div class="container">
+
+            <h1 class="page-header">Solicitud de recuperación de clases</h1>
+
+
+            <form action="../controller/recuperar.php" method="post" onsubmit="return confirm('Por favor, REVISE sus datos. ¿Generar PDF?');">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Datos de recuperación</h3>
                     </div>
                     <div class="panel-body">
-                        
+
 
                         <div class="form-group col-md-6">
                             <label for="rut">Rut docente:</label>
@@ -113,7 +111,7 @@ require_once("../model/Data.php");
 
                         <div class="form-group col-md-4" >
                             <label for="carrera">Carrera:</label>
-                            
+
                             <select class="form-control" name="carrera">
                                 <?php
                                 $d = new Data();
@@ -125,20 +123,20 @@ require_once("../model/Data.php");
                                 }
                                 ?>
                             </select>
-                            
+
 <!--                            <input class="form-control" list="listCarreras" type="text" name="carrera" required="required">
 
-                            <datalist id="listCarreras">
-                                <?php
-                                /*$d = new Data();
+<datalist id="listCarreras">
+                            <?php
+                            /* $d = new Data();
 
-                                $carreras = $d->getCarreras();
+                              $carreras = $d->getCarreras();
 
-                                foreach ($carreras as $c) {
-                                    echo "<option value='" . $c->nombre . "'/>";
-                                }*/
-                                ?>
-                            </datalist>-->
+                              foreach ($carreras as $c) {
+                              echo "<option value='" . $c->nombre . "'/>";
+                              } */
+                            ?>
+</datalist>-->
                         </div>
 
 
@@ -211,11 +209,19 @@ require_once("../model/Data.php");
 
 
 
+            </form>
+        </div>
 
-            </div>
-        </form>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link 
+            rel="stylesheet" 
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+            crossorigin="anonymous">
         <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script 
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+            crossorigin="anonymous">
+        </script>
     </body>
 </html>

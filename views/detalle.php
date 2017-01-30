@@ -1,20 +1,28 @@
 <?php
-$rut = $_POST["rut"];
-$nombre = $_POST["nombre"];
+session_start();
+$rut = $_SESSION["rut"];
+$nombre = $_SESSION["nombre"];
 
-
+require_once("../model/Data.php");
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <title></title>
+        <!-- Esto es del calendario JQUERY y para los DROPDOWN DE LOS NAVBAR -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!-- Esto es del calendario JQUERY y para los DROPDOWN DE LOS NAVBAR -->
     </head>
     <body>
+        <?php $_SESSION["paginaActual"] = 2;?>
+        <?php require_once 'navbar.php';?>
         <div class="container">
             <h1 class="page-header">Recuperaciones de <?php echo $nombre; ?> </h1>
 
-            <a href="reportes.php">Volver</a>
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h2 class="panel-title">Listado de recuperaciones</h2>
@@ -49,14 +57,13 @@ $nombre = $_POST["nombre"];
                     </form>
                     <?php
                     if (isset($_REQUEST["semestre"])) {
-                        require_once("../model/Data.php");
                         $d = new Data();
-                        
+
                         $semestre = $_REQUEST["semestre"];
                         $anio = $_REQUEST["anio"];
 
                         $horas = $d->getTotalHorasRecuperacionByFiltro($rut, $semestre, $anio);
-                        
+
                         if ($semestre == "1") {
                             $semestre = "1er";
                         } else {
@@ -76,8 +83,6 @@ $nombre = $_POST["nombre"];
                             <th>Ver</th>
                         </tr>
                         <?php
-                        
-
                         if (isset($_REQUEST["semestre"])) {
 //                            $d = new Data();
                             $semestre = $_REQUEST["semestre"];
