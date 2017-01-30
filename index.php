@@ -5,6 +5,9 @@
         <title></title>
     </head>
     <body>
+        <?php
+        require_once './controller/verificarCliente.php';
+        ?>
         <div class="container">
             <h1 class="page-header">Recuperaciones</h1>
             <form action="controller/validar.php" method="post" class="navbar-form">

@@ -1,13 +1,23 @@
 <?php
 require_once("../model/Data.php");
+session_start();
+$rut = $_SESSION["rut"];
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <title></title>
+        <!-- Esto es del calendario JQUERY y para los DROPDOWN DE LOS NAVBAR -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!-- Esto es del calendario JQUERY y para los DROPDOWN DE LOS NAVBAR -->
     </head>
     <body>
+        <?php $_SESSION["paginaActual"] = 4;?>
+        <?php require_once 'navbar.php';?>
         <div class="container">
             <h1 class="page-header">Docentes</h1>
             <div class="panel panel-primary">
@@ -25,7 +35,6 @@ require_once("../model/Data.php");
                         ?>">
                         <input type="submit" class="btn btn-default" value="Buscar">
                     </form>
-                    <a href="../views/peticionBootstrap.php">Volver</a>
                     <table class="table">
                         <tr>
                             <th>Rut</th>
@@ -47,6 +56,7 @@ require_once("../model/Data.php");
                             <form action='detalle.php' method='post'>
                                 <input type='hidden' name='rut' value='$doc->rut'>
                                 <input type='hidden' name='nombre' value='$doc->nombre'>
+                                <input type='hidden' name='volver' value='reportes.php'>
                                  
 
                                 <button type='submit' class='btn btn-success'>

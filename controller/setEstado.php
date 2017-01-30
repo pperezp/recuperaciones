@@ -1,4 +1,5 @@
 <?php
+// clase para cambiar el estado de un docente
 if(!isset($_POST["rut"])){
     header("location: ../index.php");
 }
