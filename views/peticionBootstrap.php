@@ -117,9 +117,11 @@ require_once("../model/Data.php");
                                 $d = new Data();
 
                                 $carreras = $d->getCarreras();
-
+                                
+                                $selected = "";
                                 foreach ($carreras as $c) {
-                                    echo "<option value='" . $c->nombre . "'>$c->nombre</option>";
+                                    if($c->id == 4){$selected = "selected";}else{$selected = "";}
+                                    echo "<option value='" . $c->nombre . "' $selected>$c->nombre</option>";
                                 }
                                 ?>
                             </select>
